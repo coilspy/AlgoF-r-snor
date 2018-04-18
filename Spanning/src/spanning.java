@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class spanning {
 
@@ -11,7 +12,7 @@ public class spanning {
         String inputFile = args[0];
         String[] input = readFromFile(inputFile);
         List<Vertices> cities = getCitiesFromInput(input);
-        int breakpoint = Integer.parseInt(cities.remove(cities.size()).name);
+        int breakpoint = Integer.parseInt(cities.remove(cities.size() - 1).name);
 
         for(int i = breakpoint; i < input.length; i++)
         {
@@ -34,7 +35,13 @@ public class spanning {
 
         //TODO: Implement algorithm for spanning tree.
     }
+    public static int primsAlgorithm(Vertices root, List<Vertices> graph)
+    {
+        //T <- Empty-list
+        List<Edge> Edges = new ArrayList<>();
 
+       return -1;
+    }
 
     public static Vertices getCityWithName(String name, List<Vertices> cities)
     {
@@ -45,7 +52,6 @@ public class spanning {
         }
         return null;
     }
-
     public static String[] readFromFile(String fileName)
     {
         try{
@@ -54,12 +60,15 @@ public class spanning {
             String line = null;
             while((line = reader.readLine()) != null)
             {
+                System.out.println(line);
                 fileContent.add(line);
             }
+            reader.close();
             return fileContent.toArray(new String[fileContent.size()]);
         }
         catch(Exception e)
         {
+            e.printStackTrace();
             System.out.println("Error reading file");
         }
         return null;
